@@ -1,4 +1,5 @@
 const CryptoJS = require("crypto-js");
+const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
 module.exports.createUser = async (data) => {

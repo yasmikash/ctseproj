@@ -19,7 +19,7 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
     const updatedUser = await updateUser(req.params.id, req.body);
     res.json(updatedUser);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err.message);
   }
 });
 
@@ -29,7 +29,7 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
     await deleteUser(req.params.id);
     res.send(200);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err.message);
   }
 });
 
@@ -39,7 +39,7 @@ router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
     const user = await getUser(req.params.id);
     res.status(200).json(user);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err.message);
   }
 });
 
@@ -49,7 +49,7 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
     const users = await getAllUsers(req.query.new);
     res.status(200).json(users);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err.message);
   }
 });
 
@@ -63,7 +63,7 @@ router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
     const data = await getStats(lastYear);
     res.status(200).json(data);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err.message);
   }
 });
 

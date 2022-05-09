@@ -19,7 +19,7 @@ router.post("/", verifyTokenAndAdmin, async (req, res) => {
     const savedProduct = await createProduct(req.body);
     res.status(200).json(savedProduct);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err.message);
   }
 });
 
@@ -29,7 +29,7 @@ router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
     const updatedProduct = await updateProduct(req.params.id, req.body);
     res.status(200).json(updatedProduct);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err.message);
   }
 });
 
@@ -39,7 +39,7 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
     await deleteProduct(req.params.id);
     res.status(200);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err.message);
   }
 });
 
@@ -49,7 +49,7 @@ router.get("/find/:id", async (req, res) => {
     const product = await getProduct(req.params.id);
     res.status(200).json(product);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err.message);
   }
 });
 
@@ -61,7 +61,7 @@ router.get("/", async (req, res) => {
     const products = await getAllProducts(qNew, qCategory);
     res.status(200).json(products);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err.message);
   }
 });
 

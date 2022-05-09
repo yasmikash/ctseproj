@@ -7,7 +7,7 @@ router.post("/register", async (req, res) => {
     const createdUser = await createUser(req.body);
     res.status(201).json(createdUser);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err.message);
   }
 });
 
@@ -17,7 +17,7 @@ router.post("/login", async (req, res) => {
     const result = await signUserIn(req.body);
     res.json(result);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err.message);
   }
 });
 

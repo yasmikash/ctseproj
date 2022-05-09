@@ -19,7 +19,7 @@ router.post("/", verifyToken, async (req, res) => {
     const cart = await createCart(req.body);
     res.status(200).json(cart);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err.message);
   }
 });
 
@@ -29,7 +29,7 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
     const updatedCart = await updateCart(req.params.id, req.body);
     res.status(200).json(updatedCart);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err.message);
   }
 });
 
@@ -39,7 +39,7 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
     await deleteCart(req.params.id);
     res.status(200);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err.message);
   }
 });
 
@@ -49,7 +49,7 @@ router.get("/find/:userId", verifyTokenAndAuthorization, async (req, res) => {
     const cart = await getUserCart(req.params.userId);
     res.status(200).json(cart);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err.message);
   }
 });
 
@@ -59,7 +59,7 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
     const carts = await getAllCarts();
     res.status(200).json(carts);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err.message);
   }
 });
 

@@ -22,13 +22,12 @@ module.exports.deleteCart = async (id) => {
   return true;
 };
 
+module.exports.getUserCart = async (userId) => {
+  const cart = await Cart.findOne({ userId: userId });
+  return cart;
+};
 
-module.exports.getUserCart = (userId) => {
-    const cart = await Cart.findOne({ userId: userId });
-    return cart;
-}
-
-module.exports.getAllCarts = () => {
-    const carts = await Cart.find();
-    return carts;
-}
+module.exports.getAllCarts = async () => {
+  const carts = await Cart.find();
+  return carts;
+};
