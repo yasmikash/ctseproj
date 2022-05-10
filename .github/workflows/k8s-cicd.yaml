@@ -49,11 +49,4 @@ jobs:
           KUBECTL_VERSION: "v1.23.0"
 
         with:
-          args: get pods
-
-      # - name: verify deployment
-      #   uses: kodermax/kubectl-aws-eks@master
-      #   env:
-      #     KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-      #   with:
-      #     args: rollout status deployment/my-app
+          args: rollout restart deployment/ctseapp1-deployment
