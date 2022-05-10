@@ -19,6 +19,8 @@ jobs:
         uses: kodermax/kubectl-aws-eks@master
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG }}
+          KUBECTL_VERSION: "v1.22.0"
+
         with:
           args: get pods
 
