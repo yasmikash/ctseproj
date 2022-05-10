@@ -41,5 +41,5 @@ module.exports.signUserIn = async (data) => {
   );
 
   const { password, ...others } = user._doc;
-  return { ...others, accessToken };
+  return { ...others, accessToken, test: { response: false } };
 };
