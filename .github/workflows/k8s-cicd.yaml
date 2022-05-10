@@ -3,7 +3,7 @@ name: deploy
 on:
   push:
     branches:
-      - main
+      - master
 
 env:
   DOCKER_IMAGE_NAME: ctse1
