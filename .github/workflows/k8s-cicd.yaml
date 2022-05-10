@@ -1,8 +1,17 @@
-on: push
 name: deploy
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  DOCKER_IMAGE_NAME: ctse1
+  POD_DEPLOYMENT_NAME: ctseapp1-deployment
+
 jobs:
   deploy:
-    name: Update the EKS Pod
+    name: Build Docker Image & Update EKS Pod
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: yasmikash/ctse1:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKER_IMAGE_NAME }}:latest
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -49,4 +58,4 @@ jobs:
           KUBECTL_VERSION: "v1.23.0"
 
         with:
-          args: rollout restart deployment/ctseapp1-deployment
+          args: rollout restart deployment/${{ env.POD_DEPLOYMENT_NAME }}
