@@ -4,13 +4,13 @@ module.exports.createProduct = async (data) => {
   const newProduct = new Product(data);
   const savedProduct = await newProduct.save();
   return savedProduct;
-};
-
+}; 
+ 
 module.exports.updateProduct = async (id, data) => {
   const updatedProduct = await Product.findByIdAndUpdate(
     id,
     {
-      $set: data,
+      $set: data, 
     },
     { new: true }
   );

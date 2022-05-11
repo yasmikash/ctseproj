@@ -2,7 +2,7 @@ const Cart = require("../models/Cart");
 
 module.exports.createCart = async (data) => {
   const newCart = new Cart(data);
-  const savedCart = await newCart.save();
+  const savedCart = await newCart.save(); 
   return savedCart;
 };
 
