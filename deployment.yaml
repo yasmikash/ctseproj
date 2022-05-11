@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: ctseapp-k8
-          image: yasmikash/ctse1:latest
+          image: yasmikash/ctse-user:latest
           ports:
             - containerPort: 5000
           env:
